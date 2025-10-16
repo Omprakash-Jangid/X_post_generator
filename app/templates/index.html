@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X Post Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #3b82f6;
+            --text: #e2e8f0;
+            --feedback: #facc15;
+            --iteration: #22c55e;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        form {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input[type="text"] {
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .result {
+            margin-top: 2rem;
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: left;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 0.95rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .feedback {
+            color: var(--feedback);
+            font-weight: 600;
+        }
+
+        .iteration {
+            color: var(--iteration);
+            font-weight: 600;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 X Post Generator</h1>
+        <p>Generate catchy, AI-powered X (Twitter) posts for your topic.</p>
+
+        <form action="/generate" method="post">
+            <input type="text" name="topic" placeholder="Enter your topic..." required>
+            <button type="submit">Generate Post</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h3>✨ Generated Tweet:</h3>
+            <p>{{ result }}</p>
+        </div>
+        {% endif %}
+
+        <div class="footer">
+            Built with ❤️ using FastAPI + Gemini + LangGraph
+        </div>
+    </div>
+</body>
+</html>
